@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Recipes from "./components/Recipes";
@@ -6,80 +6,83 @@ import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
 import {Container} from "@material-ui/core";
 
+const testRecipes = {
+    recipes: [
+        {
+            id: 1,
+            title: 'Pepperoni Pizza',
+            readyInMinutes: 30,
+            servings: 4,
+            vegetarian: false
+        },
+        {
+            id: 2,
+            title: 'Spagetti',
+            readyInMinutes: 45,
+            servings: 4,
+            vegetarian: false
+        },
+        {
+            id: 3,
+            title: 'Carbonara',
+            readyInMinutes: 35,
+            servings: 4,
+            vegetarian: false
+        },
+        {
+            id: 4,
+            title: 'Chicken Noodle Soup',
+            readyInMinutes: 300,
+            servings: 4,
+            vegetarian: false
+        },
+        {
+            id: 5,
+            title: 'French Omlette',
+            readyInMinutes: 15,
+            servings: 1,
+            vegetarian: true
+        }
+    ]
+};
 
-class App extends Component {
 
-    state = {
-        recipes: []
-    };
 
-    componentDidMount(): void {
-        this.setState({recipes: testRecipes});
-    }
+const App = (props) => {
 
-    getRandomRecipe = () => {
-        axios.get(``)
-            .then(res => this.setState({recipes: res.data.recipes}))
-    };
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const getTenRandomRecipeUrl = process.env.REACT_APP_GET_TEN_RANDOM_RECIPE_URL;
 
-    render() {
-        return (
-            <Router>
-                <div className="App">
-                    <div className="container">
-                        <Header getRandomRecipe={this.getRandomRecipe}/>
-                        <Route exact path="/" render={props => (
-                            <Container maxWidth={"md"} style={{ display: "flex", flexWrap: "wrap"}}>
-                                <Recipes recipes={this.state.recipes}/>
-                            </Container>
-                        )}/>
-                        <Route path={"/random"} render={props => (
-                            <RandomRecipe recipes={this.state.recipes}/>
-                        )}
-                        />
-                    </div>
+    const [state, setState] = useState({recipes: []});
+
+    const [randomRecipe, setRandomRecipe] = useState( {recipes: []});
+
+    useEffect(() => {
+        // axios.get(getTenRandomRecipeUrl + apiKey)
+        //     .then(res => setState({recipes: res.data.recipes}))
+        setState(testRecipes);
+    }, []);
+
+    return (
+        <Router>
+            <div className="App">
+                <div className="container">
+                    <Header />
+                    <Route exact path="/" render={props => (
+                        <Container maxWidth={"lg"} style={{display: "flex", flexWrap: "wrap",
+                            alignItems: 'center', justifyContent: 'center'}}>
+                            <Recipes recipes={state.recipes}/>
+                        </Container>
+                    )}/>
+                    <Route path={"/random"} render={props => (
+                        <RandomRecipe apiKey={apiKey} />
+                    )}
+                    />
                 </div>
-            </Router>
-        );
-    }
-}
+            </div>
+        </Router>
+    );
+};
 
-const testRecipes = [
-    {
-        id: 1,
-        title: 'Pepperoni Pizza',
-        readyInMinutes: 30,
-        servings: 4,
-        vegetarian: false
-    },
-    {
-        id: 2,
-        title: 'Spagetti',
-        readyInMinutes: 45,
-        servings: 4,
-        vegetarian: false
-    },
-    {
-        id: 3,
-        title: 'Carbonara',
-        readyInMinutes: 35,
-        servings: 4,
-        vegetarian: false
-    },
-    {
-        id: 4,
-        title: 'Chicken Noodle Soup',
-        readyInMinutes: 300,
-        servings: 4,
-        vegetarian: false
-    },
-    {
-        id: 5,
-        title: 'French Omlette',
-        readyInMinutes: 15,
-        servings: 1,
-        vegetarian: true
-    }
-];
 
 export default App;

@@ -17,5 +17,5 @@ yarn-debug.log*
 yarn-error.log*
 
 
-/src/resources/env_variables.env
 /.idea/
+/.env
