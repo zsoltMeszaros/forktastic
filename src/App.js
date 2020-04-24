@@ -6,6 +6,7 @@ import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
 import {Container} from "@material-ui/core";
 
+
 const testRecipes = {
     recipes: [
         {
@@ -45,8 +46,6 @@ const testRecipes = {
         }
     ]
 };
-
-
 
 const App = (props) => {
 
