@@ -633,8 +633,8 @@ const RandomRecipe = props => {
 };
 
 // PropTypes
-RandomRecipe.propTypes = {
-    apiKey: PropTypes.string.isRequired,
-};
+// RandomRecipe.propTypes = {
+//     apiKey: PropTypes.string.isRequired,
+// };
 
 export default RandomRecipe;
