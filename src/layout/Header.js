@@ -14,19 +14,6 @@ const Header = (props) => {
                             Forktastic
                         </Typography>
                     </Link>
-                    <Container>
-
-                        <ButtonGroup style={{float: 'right'}}>
-
-                            <Button style={buttonStyle}>
-                                <Link onClick={props.getRandomRecipe} href={"/random"} color={"inherit"}>Random
-                                    Recipe</Link>
-                            </Button>
-
-                            <Button size={"large"}
-                                    style={buttonStyle}>Search</Button>
-                        </ButtonGroup>
-                    </Container>
                 </Toolbar>
             </Container>
         </Box>
@@ -45,12 +32,7 @@ const toolbarStyle = {
     padding: '15px',
 };
 
-const buttonStyle = {
 
-    backgroundColor: 'mediumseagreen',
-    color: 'white',
-    outline: 'white 1px',
-};
 
 
 export default Header;
