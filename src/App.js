@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Recipes from "./components/Recipes";
 import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
-import {Container} from "@material-ui/core";
+import {Button, ButtonGroup, Container, Link, Grid} from "@material-ui/core";
+import StickyFooter from "./layout/StickyFooter";
+import SearchRecipeByName from "./components/SearchRecipeByName";
 
 const testRecipes = {
     recipes: [
@@ -47,15 +47,11 @@ const testRecipes = {
 };
 
 
-
 const App = (props) => {
 
     const apiKey = process.env.REACT_APP_API_KEY;
-    const getTenRandomRecipeUrl = process.env.REACT_APP_GET_TEN_RANDOM_RECIPE_URL;
 
     const [state, setState] = useState({recipes: []});
-
-    const [randomRecipe, setRandomRecipe] = useState( {recipes: []});
 
     useEffect(() => {
         // axios.get(getTenRandomRecipeUrl + apiKey)
@@ -67,22 +63,46 @@ const App = (props) => {
         <Router>
             <div className="App">
                 <div className="container">
-                    <Header />
+                    <Header/>
+
                     <Route exact path="/" render={props => (
-                        <Container maxWidth={"lg"} style={{display: "flex", flexWrap: "wrap",
-                            alignItems: 'center', justifyContent: 'center'}}>
-                            <Recipes recipes={state.recipes}/>
+                        <Container style={{alignItems: "center", justifyContent: "center"}}>
+                            <Grid container>
+                                <Grid item>
+                                    <ButtonGroup>
+
+                                        <Button style={buttonStyle}>
+                                            <Link href={"/random"} color={"inherit"}>Random
+                                                Recipe</Link>
+                                        </Button>
+
+                                        <Button size={"large"}
+                                                style={buttonStyle}>Search</Button>
+                                    </ButtonGroup>
+                                </Grid>
+                                <Grid item>
+                                    <SearchRecipeByName/>
+                                </Grid>
+                            </Grid>
                         </Container>
                     )}/>
                     <Route path={"/random"} render={props => (
-                        <RandomRecipe apiKey={apiKey} />
+                        <RandomRecipe apiKey={apiKey}/>
                     )}
                     />
+
+                    <StickyFooter/>
                 </div>
             </div>
         </Router>
     );
 };
 
+const buttonStyle = {
+
+    backgroundColor: 'mediumseagreen',
+    color: 'white',
+    outline: 'white 1px',
+};
 
 export default App;

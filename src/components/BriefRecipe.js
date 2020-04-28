@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Container, List, ListItem, ListItemText} from '@material-ui/core';
-import VegetarianTag from "./VegetarianTag";
+import VegetarianTag from "../tags/VegetarianTag";
 
 
 const BriefRecipe = (props) => {

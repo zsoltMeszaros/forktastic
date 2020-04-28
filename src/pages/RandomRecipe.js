@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import BriefRecipe from "../components/BriefRecipe";
 import PropTypes from "prop-types";
 import axios from "axios";
-import {Container} from "@material-ui/core";
+import {Container, ButtonGroup, Button} from "@material-ui/core";
 import LongRecipe from "../components/LongRecipe";
 
 const realRecipe = {
@@ -614,21 +613,40 @@ const RandomRecipe = props => {
     const apiKey = props.apiKey;
     const getRandomRecipeUrl = process.env.REACT_APP_GET_A_RANDOM_RECIPE_URL;
 
+    const [isLoading, setIsLoading] = useState(false);
     const [randomRecipe, setRandomRecipe] = useState(realRecipe);
 
 
-    // useEffect(() => {
-    //     axios.get(getRandomRecipeUrl + apiKey)
-    //         .then(res => setRandomRecipe({recipes: res.data.recipes}));
-    // }, []);
+    useEffect(() => {
+        setIsLoading(true);
+        axios.get(getRandomRecipeUrl + apiKey)
+            .then(res => setRandomRecipe({recipes: res.data.recipes}));
+        setIsLoading(false);
+    }, []);
+
+
+    const getRandomRecipe = () => {
+        axios.get(getRandomRecipeUrl + apiKey)
+            .then(res => setRandomRecipe({recipes: res.data.recipes}));
+    };
 
     return (
-        <Container maxWidth={"lg"} style={{
-            display: "flex", flexWrap: "wrap",
-            alignItems: 'center', justifyContent: 'center'
-        }}>
-            <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
-        </Container>
+
+        <React.Fragment>
+            <ButtonGroup>
+                <Button onClick={getRandomRecipe} variant={"contained"} color={"secondary"}>Give me Another
+                    Recipe</Button>
+            </ButtonGroup>
+            <Container maxWidth={"lg"} style={{
+                display: "flex", flexWrap: "wrap",
+                alignItems: 'center', justifyContent: 'center'
+            }}>
+                {isLoading
+                ? <div>Loading..</div>
+                : <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
+                }
+            </Container>
+        </React.Fragment>
     );
 };
 
