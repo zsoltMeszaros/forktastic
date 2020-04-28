@@ -4,9 +4,11 @@ import Ingredient from "./Ingredient";
 
 const IngredientList = (props) => {
     return (
-        props.ingredients.map((ingredient) => (
+        <React.Fragment style={{display: "flex", flexWrap: "wrap"}}>
+            {props.ingredients.map((ingredient) => (
             <Ingredient key={ingredient.id} ingredient={ingredient}/>
-        ))
+            ))}
+        </React.Fragment>
     );
 };
 

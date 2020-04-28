@@ -18,11 +18,11 @@ const Ingredient = (props) => {
 
     const classes = useStyles();
 
-    const {name} = props.ingredient;
+    const {originalString} = props.ingredient;
 
     return (
         <Grid item xs={3}>
-            <Paper className={classes.paper}>{name}</Paper>
+            <Paper elevation={0} className={classes.paper}>{originalString}</Paper>
         </Grid>
     );
 };
