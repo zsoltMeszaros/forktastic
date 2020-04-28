@@ -49,8 +49,6 @@ const testRecipes = {
 
 const App = (props) => {
 
-    const apiKey = process.env.REACT_APP_API_KEY;
-
     const [state, setState] = useState({recipes: []});
 
     useEffect(() => {
@@ -87,7 +85,7 @@ const App = (props) => {
                         </Container>
                     )}/>
                     <Route path={"/random"} render={props => (
-                        <RandomRecipe apiKey={apiKey}/>
+                        <RandomRecipe />
                     )}
                     />
 

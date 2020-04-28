@@ -610,7 +610,7 @@ const realRecipe = {
 
 const RandomRecipe = props => {
 
-    const apiKey = props.apiKey;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const getRandomRecipeUrl = process.env.REACT_APP_GET_A_RANDOM_RECIPE_URL;
 
     const [isLoading, setIsLoading] = useState(false);
