@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@material-ui/core": "latest",
@@ -14,6 +15,8 @@
     "react-scripts": "0.9.5"
   },
   "devDependencies": {
+    "@iconify/icons-fa-solid": "^1.0.10",
+    "@iconify/react": "^1.1.3",
     "axios": "^0.19.2",
     "react-router-dom": "^5.1.2"
   },

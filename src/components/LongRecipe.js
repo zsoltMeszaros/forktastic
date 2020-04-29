@@ -40,7 +40,6 @@ const LongRecipe = (props) => {
                         <h1>
                             <Link style={{ color: "black", textDecoration: "none", cursor: "pointer" }} onClick={openSourceUrl}>
                                 {title}
-                                <i className="fas fa-external-link-alt"/>
                             </Link>
                         </h1>
                         {vegetarian && <VegetarianTag/>}
