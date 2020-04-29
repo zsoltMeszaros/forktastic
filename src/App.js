@@ -59,38 +59,40 @@ const App = (props) => {
 
     return (
         <Router>
-            <div className="App">
-                <div className="container">
-                    <Header/>
+            <div className="App" >
+                <Header/>
+                <Container>
+                    <Route  style={{ height: "100%", width: "100%", }} exact path="/" render={props => (
+                        <Container >
+                            <Container style={{
+                                alignItems: "center", justifyContent: "center",
+                                margin: "0",
+                                top: "50%",
+                                left: "50%",
+                                height: "100%",
+                                width: "100%",
+                            }}>
+                                <SearchRecipeByName/>
+                                <ButtonGroup>
+                                    <Button style={buttonStyle}>
+                                        <Link href={"/random"} color={"inherit"}>Random
+                                            Recipe</Link>
 
-                    <Route exact path="/" render={props => (
-                        <Container style={{alignItems: "center", justifyContent: "center"}}>
-                            <Grid container>
-                                <Grid item>
-                                    <ButtonGroup>
+                                    </Button>
 
-                                        <Button style={buttonStyle}>
-                                            <Link href={"/random"} color={"inherit"}>Random
-                                                Recipe</Link>
-                                        </Button>
-
-                                        <Button size={"large"}
-                                                style={buttonStyle}>Search</Button>
-                                    </ButtonGroup>
-                                </Grid>
-                                <Grid item>
-                                    <SearchRecipeByName/>
-                                </Grid>
-                            </Grid>
+                                    <Button size={"large"}
+                                            style={buttonStyle}>Search</Button>
+                                </ButtonGroup>
+                            </Container>
                         </Container>
                     )}/>
                     <Route path={"/random"} render={props => (
-                        <RandomRecipe />
+                        <RandomRecipe/>
                     )}
                     />
 
-                    <StickyFooter/>
-                </div>
+                </Container>
+                <StickyFooter/>
             </div>
         </Router>
     );

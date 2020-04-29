@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container, Paper, Grid, makeStyles} from '@material-ui/core';
+import {Container, Paper, Link, Grid, makeStyles} from '@material-ui/core';
 import VegetarianTag from "../tags/VegetarianTag";
 import IngredientList from "./IngredientList";
 import GlutenFreeTag from "../tags/GlutenFreeTag";
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.primary,
-
     },
 }));
 
@@ -24,31 +23,31 @@ const LongRecipe = (props) => {
 
     const classes = useStyles();
 
-    const {title, readyInMinutes, servings, vegetarian, image, glutenFree, vegan, dairyFree} = props.recipe;
+    const {title, readyInMinutes, servings, vegetarian, sourceUrl, glutenFree, vegan, dairyFree} = props.recipe;
     const extendedIngredients = props.recipe.extendedIngredients;
     const steps = props.recipe.analyzedInstructions[0].steps;
 
+    const openSourceUrl = () => {
+        window.open(sourceUrl, "_blank");
+    };
 
     return (
         <Container style={containerStyle} maxWidth={"md"}>
-            <Grid container spacing={3}>
+            <Grid container style={{justifyContent: "center", alignItems: "center"}} spacing={3}>
                 <Grid item xs={12}>
-                    <img src={image} alt=""/>
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <Paper elevation={2} className={classes.paper}>Tags:
-                        <React.Fragment>
-                            {vegetarian && <VegetarianTag/>}
-                            {vegan && <VeganTag/>}
-                            {glutenFree && <GlutenFreeTag/>}
-                            {dairyFree && <DairyFreeTag/>}
-                        </React.Fragment>
+                    <Paper className={classes.paper}
+                           elevation={10}>
+                        <h1>
+                            <Link style={{ color: "black", textDecoration: "none", cursor: "pointer" }} onClick={openSourceUrl}>
+                                {title}
+                                <i className="fas fa-external-link-alt"/>
+                            </Link>
+                        </h1>
+                        {vegetarian && <VegetarianTag/>}
+                        {vegan && <VeganTag/>}
+                        {glutenFree && <GlutenFreeTag/>}
+                        {dairyFree && <DairyFreeTag/>}
                     </Paper>
-                </Grid>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={3}>{title}</Paper>
                 </Grid>
                 <Grid item xs={6}>
                     <Paper className={classes.paper} elevation={0}>Ready in Minutes: {readyInMinutes}</Paper>
@@ -57,11 +56,11 @@ const LongRecipe = (props) => {
                     <Paper className={classes.paper} elevation={0}>Servings: {servings}</Paper>
                 </Grid>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={3}>Ingredients:</Paper>
+                    <Paper className={classes.paper} elevation={5}>Ingredients:</Paper>
                 </Grid>
-                <IngredientList  ingredients={extendedIngredients}/>
+                <IngredientList ingredients={extendedIngredients}/>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={3}>Instructions:</Paper>
+                    <Paper className={classes.paper} elevation={5}>Instructions:</Paper>
                 </Grid>
                 {steps.map(step => (
                     <Grid item xs={12}>
@@ -77,7 +76,6 @@ const LongRecipe = (props) => {
 
 const containerStyle = {
     backgroundColor: "lightgoldenrodyellow",
-    border: "1px black solid",
     borderRadius: "25px",
     margin: '10px',
     padding: '20px',

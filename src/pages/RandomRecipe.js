@@ -633,25 +633,21 @@ const RandomRecipe = props => {
     return (
 
         <React.Fragment>
-            <ButtonGroup>
-                <Button onClick={getRandomRecipe} variant={"contained"} color={"secondary"}>Give me Another
-                    Recipe</Button>
-            </ButtonGroup>
             <Container maxWidth={"lg"} style={{
                 display: "flex", flexWrap: "wrap",
                 alignItems: 'center', justifyContent: 'center'
             }}>
                 {isLoading
-                ? <div>Loading..</div>
-                : <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
+                    ? <div>Loading..</div>
+                    : <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
                 }
             </Container>
         </React.Fragment>
     );
 };
 
+
 // PropTypes
-RandomRecipe.propTypes = {
-};
+RandomRecipe.propTypes = {};
 
 export default RandomRecipe;

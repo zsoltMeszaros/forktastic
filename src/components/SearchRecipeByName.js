@@ -3,7 +3,7 @@ import { Input } from '@material-ui/core';
 
 const SearchRecipeByName = (props) => {
 
-    const [name, setName] = useState("");
+    const [recipeName, setRecipeName] = useState("");
 
     return (
         <React.Fragment>

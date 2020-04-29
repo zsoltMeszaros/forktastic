@@ -1,6 +1,5 @@
 import React from 'react';
-import {ButtonGroup, Toolbar, Typography, Button, Container, Box} from '@material-ui/core';
-import {Link} from "@material-ui/core";
+import {Link, Toolbar, Typography, Container, Box} from '@material-ui/core';
 
 
 const Header = (props) => {
@@ -9,7 +8,7 @@ const Header = (props) => {
         <Box style={headerStyle}>
             <Container style={toolbarStyle} maxWidth={"lg"}>
                 <Toolbar>
-                    <Link  color="inherit" href={"/"}>
+                    <Link style={{ textDecoration: "none", }}  color="inherit" href={"/"}>
                         <Typography variant="h4">
                             Forktastic
                         </Typography>
@@ -29,7 +28,6 @@ const headerStyle = {
 const toolbarStyle = {
     backgroundColor: 'seagreen',
     color: 'white',
-    padding: '15px',
 };
 
 
