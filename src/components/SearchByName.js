@@ -10,7 +10,6 @@ const SearchByName = (props) => {
 
 
     const searchRecipe = (e) => {
-        axios.get()
         console.log(e.target.value);
     };
 
