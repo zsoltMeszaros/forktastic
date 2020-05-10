@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from "prop-types";
 import axios from "axios";
-import {Container, ButtonGroup, Button} from "@material-ui/core";
+import {Container, Button} from "@material-ui/core";
 import LongRecipe from "../components/LongRecipe";
 
 const realRecipe = {
@@ -632,17 +631,17 @@ const RandomRecipe = props => {
 
     return (
 
-        <React.Fragment>
-            <Container maxWidth={"lg"} style={{
-                display: "flex", flexWrap: "wrap",
-                alignItems: 'center', justifyContent: 'center'
-            }}>
+        <Container>
+            <Button color={"secondary"} onClick={getRandomRecipe}>Give Me Another Recipe</Button>
+            <Container maxWidth={"lg"}
+                        style={{display: "flex", flexWrap: "wrap",
+                                alignItems: 'center', justifyContent: 'center'}}>
                 {isLoading
                     ? <div>Loading..</div>
                     : <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
                 }
             </Container>
-        </React.Fragment>
+        </Container>
     );
 };
 

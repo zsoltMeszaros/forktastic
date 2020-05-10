@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
-import {Button, ButtonGroup, Container, Link, Grid} from "@material-ui/core";
+import {Button, ButtonGroup, Container, Link, Grid, Box} from "@material-ui/core";
 import StickyFooter from "./layout/StickyFooter";
-import SearchRecipeByName from "./components/SearchRecipeByName";
+import SearchByName from "./components/SearchByName";
+import TagSearch from "./components/SearchByTags";
 
 const testRecipes = {
     recipes: [
@@ -59,50 +60,33 @@ const App = (props) => {
 
     return (
         <Router>
-            <div className="App" >
+            <div className="App">
                 <Header/>
-                <Container>
-                    <Route  style={{ height: "100%", width: "100%", }} exact path="/" render={props => (
+                <Route exact path="/" render={props => (
+                    <Container style={{
+                        width: "50%",
+                        height: "600px",
+                        backgroundColor: "lightsalmon",
+                        borderRadius: "50px"
+                    }}>
                         <Container >
-                            <Container style={{
-                                alignItems: "center", justifyContent: "center",
-                                margin: "0",
-                                top: "50%",
-                                left: "50%",
-                                height: "100%",
-                                width: "100%",
-                            }}>
-                                <SearchRecipeByName/>
-                                <ButtonGroup>
-                                    <Button style={buttonStyle}>
-                                        <Link href={"/random"} color={"inherit"}>Random
-                                            Recipe</Link>
-
-                                    </Button>
-
-                                    <Button size={"large"}
-                                            style={buttonStyle}>Search</Button>
-                                </ButtonGroup>
-                            </Container>
+                            <SearchByName/>
                         </Container>
-                    )}/>
-                    <Route path={"/random"} render={props => (
-                        <RandomRecipe/>
-                    )}
-                    />
+                        <Container>
+                            <TagSearch/>
+                        </Container>
 
-                </Container>
-                <StickyFooter/>
+                    </Container>
+                )}/>
+                <Route path={"/random"} render={props => (
+                    <RandomRecipe/>
+                )}
+                />
             </div>
+            <StickyFooter/>
         </Router>
     );
 };
 
-const buttonStyle = {
-
-    backgroundColor: 'mediumseagreen',
-    color: 'white',
-    outline: 'white 1px',
-};
 
 export default App;
