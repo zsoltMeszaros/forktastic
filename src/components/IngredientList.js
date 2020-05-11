@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 
 const IngredientList = (props) => {
     return (
-        <Container style={{display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center"}}>
+        <Container style={{display: "flex", flexWrap: "wrap-reverse", alignItems: "center", justifyContent: "center"}}>
             {props.ingredients.map((ingredient) => (
             <Ingredient key={ingredient.id} ingredient={ingredient}/>
             ))}
