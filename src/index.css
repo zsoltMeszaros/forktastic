@@ -14,6 +14,7 @@ html, body {
 .App{
   background-image: url("https://wallpaperplay.com/walls/full/1/6/2/93324.jpg");
   background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 100%;
   margin: 0;
 }

@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
+// import {StyleSheet, Dimensions} from 'react-native';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
-import {Button, ButtonGroup, Container, Link, Grid, Box} from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import StickyFooter from "./layout/StickyFooter";
 import SearchByName from "./components/SearchByName";
 import TagSearch from "./components/SearchByTags";
 import SearchByIngredients from "./components/SearchByIngredients";
+import LoginModal from "./components/LoginModal";
 
 
 const testRecipes = {
@@ -51,6 +53,8 @@ const testRecipes = {
 
 const App = (props) => {
 
+    // const { width, height } = Dimensions.get('window');
+
     const [state, setState] = useState({recipes: []});
 
     useEffect(() => {
@@ -59,10 +63,22 @@ const App = (props) => {
         setState(testRecipes);
     }, []);
 
+    const displayLoginModal = () => {
+
+
+    };
+
+    const login = (e) => {
+        
+    };
+
     return (
         <Router>
             <div className="App" >
-                <Header/>
+                <Header
+                    displayLoginModal={displayLoginModal}
+                />
+                <LoginModal login={login} style={{ display: "none"}} />
                 <Route exact path="/" render={props => (
                     <Container style={containerStyle}>
                         <Container >
@@ -96,6 +112,7 @@ const containerStyle = {
     marginBottom: "20px",
     marginTop: "30px",
     width: "fit-content",
+
 };
 
 const flexBoxStyle = {
