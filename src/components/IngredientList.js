@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Ingredient from "./Ingredient";
+import Container from "@material-ui/core/Container";
 
 const IngredientList = (props) => {
     return (
-        <React.Fragment style={{display: "flex", flexWrap: "wrap"}}>
+        <Container style={{display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center"}}>
             {props.ingredients.map((ingredient) => (
             <Ingredient key={ingredient.id} ingredient={ingredient}/>
             ))}
-        </React.Fragment>
+        </Container>
     );
 };
 

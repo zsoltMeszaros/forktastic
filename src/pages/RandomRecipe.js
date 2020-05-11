@@ -631,11 +631,13 @@ const RandomRecipe = props => {
 
     return (
 
-        <Container>
-            <Button color={"secondary"} onClick={getRandomRecipe}>Give Me Another Recipe</Button>
+        <Container style={{ textAlign: "center"}}>
+            <Button style={{ margin: "10px"}} color={"primary"} variant={"contained"} onClick={getRandomRecipe}>Give Me Another Recipe</Button>
             <Container maxWidth={"lg"}
-                        style={{display: "flex", flexWrap: "wrap",
-                                alignItems: 'center', justifyContent: 'center'}}>
+                       style={{
+                           display: "flex", flexWrap: "wrap",
+                           alignItems: 'center', justifyContent: 'center'
+                       }}>
                 {isLoading
                     ? <div>Loading..</div>
                     : <LongRecipe key={randomRecipe.recipes[0].id} recipe={randomRecipe.recipes[0]}/>
@@ -645,8 +647,5 @@ const RandomRecipe = props => {
     );
 };
 
-
-// PropTypes
-RandomRecipe.propTypes = {};
 
 export default RandomRecipe;

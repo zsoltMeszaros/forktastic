@@ -6,6 +6,7 @@ import IngredientList from "./IngredientList";
 import GlutenFreeTag from "../tags/GlutenFreeTag";
 import VeganTag from "../tags/VeganTag";
 import DairyFreeTag from "../tags/DairyFreeTag";
+import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,51 +34,98 @@ const LongRecipe = (props) => {
 
     return (
         <Container style={containerStyle} maxWidth={"md"}>
-            <Grid container style={{justifyContent: "center", alignItems: "center"}} spacing={3}>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper}
-                           elevation={10}>
-                        <h1>
-                            <Link style={{ color: "black", textDecoration: "none", cursor: "pointer" }} onClick={openSourceUrl}>
-                                {title}
-                            </Link>
-                        </h1>
-                        {vegetarian && <VegetarianTag/>}
-                        {vegan && <VeganTag/>}
-                        {glutenFree && <GlutenFreeTag/>}
-                        {dairyFree && <DairyFreeTag/>}
-                    </Paper>
-                </Grid>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper} elevation={0}>Ready in Minutes: {readyInMinutes}</Paper>
-                </Grid>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper} elevation={0}>Servings: {servings}</Paper>
-                </Grid>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={5}>Ingredients:</Paper>
-                </Grid>
+            <Container style={boxStyle}>
+                <Container>
+                    <h1>
+                        <Link style={{color: "black", textDecoration: "none", cursor: "pointer"}}
+                              onClick={openSourceUrl}>
+                            {title}
+                        </Link>
+                    </h1>
+                </Container>
+                <Container style={{justifyContent: "center", alignItems: "center",}}>
+                    {vegetarian && <VegetarianTag/>}
+                    {vegan && <VeganTag/>}
+                    {glutenFree && <GlutenFreeTag/>}
+                    {dairyFree && <DairyFreeTag/>}
+                </Container>
+            </Container>
+            <Container style={titleContainerStyle}>
+                <h2 style={titleStyle}>
+                    Ready in Minutes: {readyInMinutes}</h2>
+                <h2 style={titleStyle}>
+                    Servings: {servings}</h2>
+            </Container>
+            <Container style={titleContainerStyle}>
+                <h2 style={titleStyle}>
+                    Ingredients:
+                </h2>
+            </Container>
+            <Container style={flexBoxStyle}>
                 <IngredientList ingredients={extendedIngredients}/>
-                <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={5}>Instructions:</Paper>
-                </Grid>
-                {steps.map(step => (
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper} elevation={0} key={step.number}>
-                            {step.step}
-                        </Paper>
-                    </Grid>
+            </Container>
+            <Container style={titleContainerStyle}>
+                <h2 style={titleStyle}>
+                    Instructions:
+                </h2>
+            </Container>
+            <Container style={flexBoxStyle}>
+                {steps.map((step, index) => (
+                    <div style={titleStyle}>
+                        {index + 1 + ". " + step.step}
+                    </div>
                 ))}
-            </Grid>
+            </Container>
         </Container>
     );
 };
 
+const titleContainerStyle = {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10px",
+    display: "flex",
+    flexWrap: "wrap"
+};
+
+const flexBoxStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "5px",
+    margin: "5px",
+    backgroundColor: "darksalmon",
+    borderRadius: "15px"
+};
+
+const titleStyle = {
+    maxWidth: "fit-content",
+    backgroundColor: "beige",
+    padding: "10px 40px 10px 40px",
+    textAlign: "center",
+    margin: "15px",
+    borderRadius: "15px",
+};
+
 const containerStyle = {
-    backgroundColor: "lightgoldenrodyellow",
-    borderRadius: "25px",
-    margin: '10px',
-    padding: '20px',
+    backgroundColor: "lightsalmon",
+    borderRadius: "80px",
+    padding: '35px',
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "20px"
+};
+
+const boxStyle = {
+    borderRadius: "30px",
+    backgroundColor: "beige",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    minWidth: "fit-content",
+    maxWidth: "80%",
+    padding: "20px",
 };
 
 // PropTypes

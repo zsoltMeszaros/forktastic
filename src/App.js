@@ -6,6 +6,7 @@ import {Button, ButtonGroup, Container, Link, Grid, Box} from "@material-ui/core
 import StickyFooter from "./layout/StickyFooter";
 import SearchByName from "./components/SearchByName";
 import TagSearch from "./components/SearchByTags";
+import SearchByIngredients from "./components/SearchByIngredients";
 
 const testRecipes = {
     recipes: [
@@ -67,13 +68,18 @@ const App = (props) => {
                         width: "50%",
                         height: "600px",
                         backgroundColor: "lightsalmon",
-                        borderRadius: "50px"
+                        borderRadius: "50px",
+                        padding: "15px",
+                        marginTop: "20px"
                     }}>
                         <Container >
                             <SearchByName/>
                         </Container>
                         <Container>
                             <TagSearch/>
+                        </Container>
+                        <Container>
+                            <SearchByIngredients />
                         </Container>
 
                     </Container>

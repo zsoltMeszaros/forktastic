@@ -20,11 +20,21 @@ const Ingredient = (props) => {
 
     const {originalString} = props.ingredient;
 
+
     return (
-        <Grid item xs={3}>
-            <Paper elevation={0} className={classes.paper}>{originalString}</Paper>
-        </Grid>
+        <div style={ingredientStyle}>
+            {originalString}
+        </div>
     );
+};
+
+const ingredientStyle = {
+    maxWidth: "fit-content",
+    backgroundColor: "beige",
+    padding: "10px 32px 10px 20px",
+    textAlign: "center",
+    margin: "10px",
+    borderRadius: "15px",
 };
 
 // PropTypes
