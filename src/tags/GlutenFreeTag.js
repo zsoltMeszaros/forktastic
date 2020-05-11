@@ -6,7 +6,7 @@ const GlutenFreeTag = () => {
 
     return (
         <React.Fragment>
-            <Chip label={"GLUTEN FREE"} style={{ backgroundColor: "rebeccapurple", color: "white"}}  />
+            <Chip label={"GLUTEN FREE"} style={{ backgroundColor: "rebeccapurple", color: "white", marginLeft: "10px"}}  />
         </React.Fragment>
     );
 }

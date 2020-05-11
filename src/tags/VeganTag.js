@@ -6,7 +6,7 @@ const VeganTag = () => {
 
     return (
         <React.Fragment>
-            <Chip label={"VEGAN"} style={{ backgroundColor: "lawngreen", color: "black"}}  />
+            <Chip label={"VEGAN"} style={{ backgroundColor: "lawngreen", color: "black", marginLeft: "10px"}}  />
         </React.Fragment>
     );
 }
