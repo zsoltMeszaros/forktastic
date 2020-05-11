@@ -10,22 +10,31 @@ const SearchByTags = () => {
     let selectedTags = [];
 
     const addTagToSelected = (e) => {
-        if (e.target.checked){
+        if (e.target.checked) {
             console.log(e.target.value);
         }
     };
 
     return (
-        <Container style={{ backgroundColor: "white", width: "fit-content", height: "fit-content", padding: "10px"}}>
-            <FormGroup row>
-
-                {tags.map(tag => (
-                    <FormControlLabel control={<Checkbox  onChange={addTagToSelected} color={"primary"}/>} label={tag}/>
-                ))}
-                <Button type={"submit"} variant={"contained"} color={"primary"}>Search By Diet</Button>
-            </FormGroup>
+        <Container style={boxStyle}>
+            {tags.map((tag, index) => (
+                <FormControlLabel key={index} control={<Checkbox onChange={addTagToSelected} color={"primary"}/>}
+                                  label={tag}/>
+            ))}
+            <Button type={"submit"} variant={"contained"} color={"primary"}>Search By Diet</Button>
         </Container>
     )
+};
+
+const boxStyle = {
+    marginBottom: "20px",
+    borderRadius: "15px",
+    backgroundColor: "beige",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "fit-content",
+    padding: "15px",
 };
 
 export default SearchByTags;

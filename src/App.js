@@ -8,6 +8,7 @@ import SearchByName from "./components/SearchByName";
 import TagSearch from "./components/SearchByTags";
 import SearchByIngredients from "./components/SearchByIngredients";
 
+
 const testRecipes = {
     recipes: [
         {
@@ -48,7 +49,6 @@ const testRecipes = {
     ]
 };
 
-
 const App = (props) => {
 
     const [state, setState] = useState({recipes: []});
@@ -61,17 +61,10 @@ const App = (props) => {
 
     return (
         <Router>
-            <div className="App">
+            <div className="App" >
                 <Header/>
                 <Route exact path="/" render={props => (
-                    <Container style={{
-                        width: "50%",
-                        height: "600px",
-                        backgroundColor: "lightsalmon",
-                        borderRadius: "50px",
-                        padding: "15px",
-                        marginTop: "20px"
-                    }}>
+                    <Container style={containerStyle}>
                         <Container >
                             <SearchByName/>
                         </Container>
@@ -92,6 +85,48 @@ const App = (props) => {
             <StickyFooter/>
         </Router>
     );
+};
+
+const containerStyle = {
+    backgroundColor: "lightsalmon",
+    borderRadius: "60px",
+    padding: '30px 40px 30px 40px',
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: "20px",
+    marginTop: "30px",
+    width: "fit-content",
+};
+
+const flexBoxStyle = {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "5px",
+    margin: "5px",
+    backgroundColor: "darksalmon",
+    borderRadius: "15px"
+};
+
+const titleStyle = {
+    maxWidth: "fit-content",
+    backgroundColor: "beige",
+    padding: "10px 40px 10px 40px",
+    textAlign: "center",
+    margin: "15px",
+    borderRadius: "15px",
+};
+
+const boxStyle = {
+    borderRadius: "30px",
+    backgroundColor: "beige",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    minWidth: "fit-content",
+    maxWidth: "80%",
+    padding: "20px",
 };
 
 

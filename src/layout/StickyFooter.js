@@ -34,12 +34,12 @@ const StickyFooter = () => {
     return (
         <div className={classes.root}>
             <footer className={classes.footer}>
-                <Container maxWidth="sm">
+                <Container style={{ textAlign: "center"}} maxWidth="sm">
                     <Copyright />
                 </Container>
             </footer>
         </div>
     );
-}
+};
 
 export default StickyFooter;

@@ -9,6 +9,6 @@ const VegetarianTag = () => {
             <Chip label={"VEGETARIAN"} style={{ backgroundColor: "forestgreen", color: "white"}}  />
         </React.Fragment>
     );
-}
+};
 
 export default VegetarianTag;

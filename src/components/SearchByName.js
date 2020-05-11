@@ -30,15 +30,34 @@ const SearchByName = (props) => {
     };
 
     return (
-        <Container style={{textAlign: "center", backgroundColor: "white", width: "fit-content", height: "fit-content", padding: "5px", marginBottom: "10px"}}>
-            <Input onChange={searchRecipe} style={{backgroundColor: "white", borderRadius: "1px", padding: "5px"}}
-                   placeholder={"Enter recipe name.."}/>
+        <Container style={boxStyle}>
+            <input onChange={searchRecipe} style={inputStyle}
+                   placeholder={"Enter recipe name"}/>
 
-            <Button style={{ margin: "10px"}} variant={"contained"} color={"default"}>
-                Search Recipe
+            <Button style={{ margin: "10px"}} variant={"contained"} color={"primary"}>
+                Search by Name
             </Button>
         </Container>
     );
+};
+
+const inputStyle = {
+    padding: "10px 15px 10px 15px",
+    border: "none",
+    fontSize: "1.1em",
+    width: "fit-content",
+    backgroundColor: "beige"
+};
+
+const boxStyle = {
+    marginBottom: "20px",
+    borderRadius: "30px",
+    backgroundColor: "beige",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "fit-content",
+    height: "fit-content"
 };
 
 
