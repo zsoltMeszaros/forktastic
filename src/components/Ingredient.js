@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from "@material-ui/core/Paper";
-import {Grid, makeStyles} from "@material-ui/core";
+import {FormControlLabel, Grid, makeStyles} from "@material-ui/core";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +24,9 @@ const Ingredient = (props) => {
 
     return (
         <div style={ingredientStyle}>
-            {originalString}
+            <FormControlLabel control={<Checkbox color={"primary"}/>}
+                              label={originalString}>
+            </FormControlLabel>
         </div>
     );
 };
@@ -31,8 +34,8 @@ const Ingredient = (props) => {
 const ingredientStyle = {
     maxWidth: "fit-content",
     backgroundColor: "beige",
-    padding: "10px 32px 10px 20px",
     textAlign: "center",
+    paddingLeft: "5px",
     margin: "10px",
     borderRadius: "15px",
 };

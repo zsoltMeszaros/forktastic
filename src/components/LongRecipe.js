@@ -57,7 +57,7 @@ const LongRecipe = (props) => {
                     Servings: {servings}</h2>
             </Container>
             <Container style={titleStyle}>
-                <Typography style={{ fontSize: "1.1rem"}} dangerouslySetInnerHTML={{ __html: summary }}>
+                <Typography style={{fontSize: "1.1rem"}} dangerouslySetInnerHTML={{__html: summary}}>
                 </Typography>
             </Container>
             <Container style={titleContainerStyle}>
@@ -75,8 +75,10 @@ const LongRecipe = (props) => {
             </Container>
             <Container style={flexBoxStyle}>
                 {steps.map((step, index) => (
-                    <div key={index} style={titleStyle}>
-                        {index + 1 + ". " + step.step}
+                    <div key={index} style={stepStyle}>
+                        <div style={{ textAlign: "left"}}>
+                            {index + 1 + ". " + step.step}
+                        </div>
                     </div>
                 ))}
             </Container>
@@ -107,6 +109,15 @@ const titleStyle = {
     maxWidth: "fit-content",
     backgroundColor: "beige",
     padding: "10px 40px 10px 40px",
+    textAlign: "center",
+    margin: "15px",
+    borderRadius: "15px",
+};
+
+const stepStyle = {
+    width: "80%",
+    backgroundColor: "beige",
+    padding: "15px",
     textAlign: "center",
     margin: "15px",
     borderRadius: "15px",
