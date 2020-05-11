@@ -1,21 +1,21 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-const LoginModal = (props) => {
+const RegisterModal = () => {
 
-    const login = () => {
+    const register = () => {
         let username = document.querySelector("#username").value;
         let password = document.querySelector("#password").value;
+        let rePassword = document.querySelector("#rePassword").value;
     };
 
     const hideModal = () => {
-        let modal = document.querySelector("#loginModal");
+        let modal = document.querySelector("#registerModal");
         modal.style.display = "none";
     };
 
     return (
-        <div id={"loginModal"} style={modalStyle}>
+        <div id={"registerModal"} style={modalStyle}>
             <button onClick={hideModal} style={closeButtonStyle}>
                 X
             </button>
@@ -23,10 +23,14 @@ const LoginModal = (props) => {
                 <form>
                     <h2>Username:</h2>
                     <input id={"username"} style={inputStyle} name={"username"} type="text"/>
+                    <h2>Email:</h2>
+                    <input id={"email"} style={inputStyle} name={"email"} type="text"/>
                     <h2>Password:</h2>
                     <input id={"password"} style={inputStyle} name={"password"} type="password"/>
+                    <h2>Password Again:</h2>
+                    <input id={"rePassword"} style={inputStyle} name={"rePassword"} type="password"/>
                     <div style={{marginTop: "15px"}}>
-                        <Button onClick={login} variant={"contained"} color={"primary"}>Login</Button>
+                        <Button onClick={register} variant={"contained"} color={"primary"}>Register</Button>
                     </div>
                 </form>
             </div>
@@ -68,7 +72,7 @@ const modalStyle = {
     margin: "0 auto",
     left: "0",
     right: "0",
-    top: "25%",
+    top: "15%",
     width: "fit-content",
     height: "fit-content",
     borderRadius: "25px",
@@ -77,4 +81,4 @@ const modalStyle = {
     justifyContent: "center"
 };
 
-export default LoginModal;
+export default RegisterModal;

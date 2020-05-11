@@ -24,7 +24,7 @@ const LongRecipe = (props) => {
 
     const classes = useStyles();
 
-    const {title, readyInMinutes, servings, vegetarian, sourceUrl, glutenFree, vegan, dairyFree} = props.recipe;
+    const {title, readyInMinutes, servings, vegetarian, sourceUrl, glutenFree, vegan, dairyFree, summary} = props.recipe;
     const extendedIngredients = props.recipe.extendedIngredients;
     const steps = props.recipe.analyzedInstructions[0].steps;
 
@@ -56,6 +56,10 @@ const LongRecipe = (props) => {
                 <h2 style={titleStyle}>
                     Servings: {servings}</h2>
             </Container>
+            <Container style={titleStyle}>
+                <Typography style={{ fontSize: "1.1rem"}} dangerouslySetInnerHTML={{ __html: summary }}>
+                </Typography>
+            </Container>
             <Container style={titleContainerStyle}>
                 <h2 style={titleStyle}>
                     Ingredients:
@@ -71,7 +75,7 @@ const LongRecipe = (props) => {
             </Container>
             <Container style={flexBoxStyle}>
                 {steps.map((step, index) => (
-                    <div style={titleStyle}>
+                    <div key={index} style={titleStyle}>
                         {index + 1 + ". " + step.step}
                     </div>
                 ))}

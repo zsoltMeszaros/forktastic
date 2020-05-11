@@ -3,12 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";
-import {Container} from "@material-ui/core";
+import {Button, Container} from "@material-ui/core";
 import StickyFooter from "./layout/StickyFooter";
 import SearchByName from "./components/SearchByName";
 import TagSearch from "./components/SearchByTags";
 import SearchByIngredients from "./components/SearchByIngredients";
 import LoginModal from "./components/LoginModal";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import RegisterModal from "./components/RegisterModal";
 
 
 const testRecipes = {
@@ -63,32 +65,32 @@ const App = (props) => {
         setState(testRecipes);
     }, []);
 
-    const displayLoginModal = () => {
-
-
-    };
-
-    const login = (e) => {
-        
-    };
-
     return (
         <Router>
-            <div className="App" >
-                <Header
-                    displayLoginModal={displayLoginModal}
-                />
-                <LoginModal login={login} style={{ display: "none"}} />
+            <div className="App">
+                <Header />
+                <LoginModal />
+                <RegisterModal />
                 <Route exact path="/" render={props => (
                     <Container style={containerStyle}>
-                        <Container >
+                        <Container>
                             <SearchByName/>
                         </Container>
                         <Container>
                             <TagSearch/>
                         </Container>
                         <Container>
-                            <SearchByIngredients />
+                            <SearchByIngredients/>
+                        </Container>
+                        <Container>
+                            <ButtonGroup style={{textDecoration: "none", marginLeft: "20px"}}>
+                                <Button variant={"contained"} color={"primary"}>
+                                    Search by Name and Diet
+                                </Button>
+                                <Button variant={"contained"} color={"primary"}>
+                                    uhhh??
+                                </Button>
+                            </ButtonGroup>
                         </Container>
 
                     </Container>
@@ -104,13 +106,15 @@ const App = (props) => {
 };
 
 const containerStyle = {
+    margin: "auto",
+    marginTop: "10%",
     backgroundColor: "lightsalmon",
     borderRadius: "60px",
     padding: '30px 40px 30px 40px',
     alignItems: "center",
     justifyContent: "center",
+    textAlign: "center",
     marginBottom: "20px",
-    marginTop: "30px",
     width: "fit-content",
 
 };
@@ -123,7 +127,8 @@ const flexBoxStyle = {
     padding: "5px",
     margin: "5px",
     backgroundColor: "darksalmon",
-    borderRadius: "15px"
+    borderRadius: "15px",
+    width: "fit-content"
 };
 
 const titleStyle = {

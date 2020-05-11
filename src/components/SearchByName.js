@@ -34,7 +34,7 @@ const SearchByName = (props) => {
             <input onChange={searchRecipe} style={inputStyle}
                    placeholder={"Enter recipe name"}/>
 
-            <Button style={{ margin: "10px"}} variant={"contained"} color={"primary"}>
+            <Button style={{ margin: "10px"}} variant={"contained"} color={"secondary"}>
                 Search by Name
             </Button>
         </Container>

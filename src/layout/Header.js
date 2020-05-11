@@ -1,9 +1,19 @@
 import React from 'react';
-import {Link, Toolbar, Typography, Container, Box, Button} from '@material-ui/core';
+import {Link, Typography, Container, Box, Button} from '@material-ui/core';
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 
 const Header = () => {
+
+    const openLoginModal = () =>{
+        document.querySelector("#registerModal").style.display = "none";
+        document.querySelector("#loginModal").style.display = "block";
+    };
+
+    const openRegisterModal = () =>{
+        document.querySelector("#loginModal").style.display = "none";
+        document.querySelector("#registerModal").style.display = "block";
+    };
 
     return (
         <Box style={headerStyle}>
@@ -20,10 +30,10 @@ const Header = () => {
                         </Button>
                     </Link>
                     <ButtonGroup style={{textDecoration: "none", marginLeft: "20px"}}>
-                        <Button variant={"contained"} color={"primary"}>
+                        <Button onClick={openRegisterModal} variant={"contained"} color={"primary"}>
                             Register
                         </Button>
-                        <Button variant={"contained"} color={"primary"}>
+                        <Button onClick={openLoginModal} variant={"contained"} color={"primary"}>
                             Login
                         </Button>
                     </ButtonGroup>
