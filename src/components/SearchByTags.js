@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormGroup, FormControlLabel, Button} from "@material-ui/core";
+import {FormControlLabel, Button} from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import Container from "@material-ui/core/Container";
 

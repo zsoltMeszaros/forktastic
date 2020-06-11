@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./layout/Header";
 import RandomRecipe from "./pages/RandomRecipe";

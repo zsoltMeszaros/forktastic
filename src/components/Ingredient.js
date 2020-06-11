@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from "@material-ui/core/Paper";
 import {FormControlLabel, Grid, makeStyles} from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 
