@@ -48,7 +48,7 @@ const LongRecipe = (props) => {
                     {vegan && <VeganTag/>}
                     {glutenFree && <GlutenFreeTag/>}
                     {dairyFree && <DairyFreeTag/>}
-                </Container>
+                </Container>c
             </Container>
             <Container style={titleContainerStyle}>
                 <h2 style={titleStyle}>

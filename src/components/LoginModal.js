@@ -22,9 +22,9 @@ const LoginModal = (props) => {
             <div style={{margin: "60px 80px 60px 80px", textAlign: "center"}}>
                 <form>
                     <h2>Username:</h2>
-                    <input id={"username"} style={inputStyle} name={"username"} type="text"/>
+                    <input id={"login_username"} style={inputStyle} name={"login_username"} type="text"/>
                     <h2>Password:</h2>
-                    <input id={"password"} style={inputStyle} name={"password"} type="password"/>
+                    <input id={"login_password"} style={inputStyle} name={"login_password"} type="password"/>
                     <div style={{marginTop: "15px"}}>
                         <Button onClick={login} variant={"contained"} color={"primary"}>Login</Button>
                     </div>
