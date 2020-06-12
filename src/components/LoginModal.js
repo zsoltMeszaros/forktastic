@@ -1,11 +1,37 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
+
 
 const LoginModal = (props) => {
 
     const login = () => {
-        let username = document.querySelector("#username").value;
-        let password = document.querySelector("#password").value;
+        let username = document.querySelector("#login_username").value;
+        let password = document.querySelector("#login_password").value;
+
+        const newUser = {
+            username: username,
+            password: password,
+        };
+
+        let message;
+
+        const backendDomain = process.env.REACT_APP_BACKEND_DOMAIN;
+        const loginRoute = process.env.REACT_APP_LOGIN_ROUTE;
+
+        axios.post(backendDomain + loginRoute, newUser)
+            .then(res => {
+                message=res.data;
+                console.log(message);
+                document.querySelector("#errorMessage").textContent = message;
+                document.querySelector("#errorMessage").style.color = "green";
+            }).catch(err => {
+            message=err.response.data.message;
+            console.log(message)
+            document.querySelector("#errorMessage").textContent = message;
+            document.querySelector("#errorMessage").style.color = "red";
+        });
+
     };
 
     const hideModal = () => {
@@ -21,11 +47,13 @@ const LoginModal = (props) => {
             <div style={{margin: "60px 80px 60px 80px", textAlign: "center"}}>
                 <form>
                     <h2>Username:</h2>
-                    <input id={"login_username"} style={inputStyle} name={"login_username"} type="text"/>
+                    <input id={"login_username"} style={inputStyle} name={"login_username"} type="text" />
                     <h2>Password:</h2>
-                    <input id={"login_password"} style={inputStyle} name={"login_password"} type="password"/>
+                    <input id={"login_password"} style={inputStyle} name={"login_password"} type="password" />
                     <div style={{marginTop: "15px"}}>
                         <Button onClick={login} variant={"contained"} color={"primary"}>Login</Button>
+                    </div>
+                    <div id={"errorMessage"} style={{ fontSize: "15px", margin: "10px" }}>
                     </div>
                 </form>
             </div>
